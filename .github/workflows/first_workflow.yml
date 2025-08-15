@@ -11,7 +11,12 @@ env:
     
 jobs:
     echoing:
+        concurrency: 
+            group: production-deployment
+            cancel-in-progress: true
         runs-on: ubuntu-latest
         steps:
         - name: echo things here
-          run: echo "Hello ${{env.user_name}}, Welcome to GitHub Actions !!!"        
+          run:  |
+            echo "Hello ${{env.user_name}}, Welcome to GitHub Actions !!!"
+            sleep 600s
