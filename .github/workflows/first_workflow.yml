@@ -20,4 +20,4 @@ jobs:
         - name: echo things here
           run:  |
             echo "Hello ${{env.user_name}}, Welcome to GitHub Actions !!!"
-            sleep 600s
+            sleep 30s
