@@ -1,0 +1,14 @@
+name: First WorkFlow
+
+on:
+    push
+
+env:
+    user_name: shubham
+    
+jobs:
+    echoing:
+        runs-on: ubuntu-latest
+        steps:
+        - name: echo things here
+          run: echo "Hello ${{env.user_name}}, Welcome to GitHub Actions !!!"        
