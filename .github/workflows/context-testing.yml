@@ -1,0 +1,13 @@
+name: Context Testing Workflow
+
+on: 
+    push:
+
+jobs:
+    context_testing:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Echo runner context
+          env:
+            RUNNER_CONTEXT : ${{ toJson(runner) }}
+          run: echo "$RUNNER_CONTEXT"       
