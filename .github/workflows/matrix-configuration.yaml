@@ -9,16 +9,39 @@ jobs:
             fail-fast: false
             max-parallel: 2
             matrix:
-                os: [ubuntu-latest, ubuntu-20.04, windows-latest]
+                os: [ubuntu-latest, ubuntu-22.04, windows-latest]
                 images: [hello-world, alpine]
                 exclude:
                     - images: alpine
                       os: windows-latest
                 include:
                     - images: amd64/alpine
-                      os: ubuntu-20.04
+                      os: ubuntu-22.04
         runs-on: ${{ matrix.os}} 
         steps:
+
+            - name: Install Docker on Ubuntu if missing
+              if: runner.os == 'Linux'
+              run: |
+                if ! command -v docker &> /dev/null; then
+                    echo "Docker not found. Installing..."
+                    sudo apt-get update
+                    sudo apt-get install -y docker.io
+                    sudo usermod -aG docker $USER
+                else
+                    echo "Docker already installed."
+                fi
+            
+            - name: Install Docker on Windows if missing
+              if: runner.os == 'Windows'
+              run: |
+                if (-not (Get-Command docker -ErrorAction SilentlyContinue)) {
+                    choco install docker-cli --confirm
+                    echo "Docker CLI installed. Note: Docker Desktop service is not auto-started on GitHub-hosted Windows runners."
+                } else {
+                    Write-Host "Docker already installed."
+                }
+
             - name: Echo Docker Details
               run : docker info
             
