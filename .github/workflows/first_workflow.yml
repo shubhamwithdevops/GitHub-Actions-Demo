@@ -1,7 +1,8 @@
 name: First WorkFlow
 
 on:
-    push
+    # push
+    workflow_dispatch
 
 env:
     user_name: shubham
