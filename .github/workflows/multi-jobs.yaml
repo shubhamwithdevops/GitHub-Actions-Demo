@@ -33,7 +33,7 @@ jobs:
                 path: dragon.txt
 
             - name: Test File Exists
-              run: grep -i "dragon" dragon.txt
+              run: grep -i "dragon" dragon.txt/dragon.txt
 
     
     deploy_job_3:
@@ -48,5 +48,5 @@ jobs:
                 path: dragon.txt
 
             - name: Read File
-              run: cat dragon.txt
+              run: cat dragon.txt/dragon.txt
             
