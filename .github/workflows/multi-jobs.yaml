@@ -51,5 +51,8 @@ jobs:
               run: cat dragon.txt/dragon.txt
             
             - name: Echo Secrets
-              run: echo "${{secrets.DOCKER_PASSWORD}} "  
+              run: |
+               echo "${{secrets.DOCKER_PASSWORD}} "
+               echo "${{vars.DOCKER_USERNAME}} "
+             
             
