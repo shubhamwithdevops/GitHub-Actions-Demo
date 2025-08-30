@@ -16,7 +16,7 @@ jobs:
 
             
             - name: Upload Dragon text file
-              uses: action/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               with:
                 name: my-artifact
                 path: dragon.txt
@@ -27,7 +27,7 @@ jobs:
         steps:
 
             - name: Download Dragon text file
-              uses: action/download-artifact@v3
+              uses: actions/download-artifact@v4
               with:
                 name: my-artifact
                 path: dragon.txt
@@ -42,7 +42,7 @@ jobs:
         steps:
 
             - name: Download Dragon text file
-              uses: action/download-artifact@v3
+              uses: actions/download-artifact@v4
               with:
                 name: my-artifact
                 path: dragon.txt
