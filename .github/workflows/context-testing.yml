@@ -2,6 +2,7 @@ name: Context Testing Workflow
 
 on: 
     push:
+    workflow_dispatch: 
 
 jobs:
     context_testing:
@@ -10,4 +11,12 @@ jobs:
         - name: Echo runner context
           env:
             RUNNER_CONTEXT : ${{ toJson(runner) }}
-          run: echo "$RUNNER_CONTEXT"       
+          run: echo "$RUNNER_CONTEXT"
+        - name: Echo GITHUB  context
+          env:
+            GITHUB_CONTEXT : ${{ toJson(github) }}
+          run: echo "$GITHUB_CONTEXT"
+        - name: Echo SECRET  context
+          env:
+            SECRET_CONTEXT : ${{ toJson(secrets) }}
+          run: echo "$SECRET_CONTEXT"          

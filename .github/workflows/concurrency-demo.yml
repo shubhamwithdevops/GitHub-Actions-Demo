@@ -13,8 +13,10 @@ jobs:
     echoing:
         concurrency: 
             group: production-deployment
-            # cancel-in-progress: true
+            # cancel-in-progress: true 
+            # True will cancel any in progress job within same group and run new one.
             cancel-in-progress: false
+            # False will let wait the another run until the one running is finished , but it won't cancel any of it.
         runs-on: ubuntu-latest
         steps:
         - name: echo things here
