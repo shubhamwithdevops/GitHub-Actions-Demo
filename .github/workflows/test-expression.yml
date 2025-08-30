@@ -1,9 +1,11 @@
 name: Testing workflow for expressions
-
 on: 
     push:
-
+# env:
+#   RUNNER_CONTEXT : ${{ toJson(runner) }}
 jobs:
+  # env:
+  #   RUNNER_CONTEXT : ${{ toJson(runner) }}
     expression-testing:
         if: github.ref == 'refs/heads/main'
         runs-on: ubuntu-latest
@@ -11,4 +13,5 @@ jobs:
         - name: Echo runner context
           env:
             RUNNER_CONTEXT : ${{ toJson(runner) }}
-          run: echo "$RUNNER_CONTEXT"       
+          # run: echo "$RUNNER_CONTEXT"
+          run: echo   "${{ env.RUNNER_CONTEXT }}"

@@ -50,3 +50,6 @@ jobs:
             - name: Read File
               run: cat dragon.txt/dragon.txt
             
+            - name: Echo Secrets
+              run: echo "${{secrets.DOCKER_PASSWORD}} "  
+            
